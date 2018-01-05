@@ -11,18 +11,18 @@ public class PricingStrategyFactory {
 		return instance;
 	}
 	
-	IPricingStrategy getPricingStrategy(int bookType) {
+	IPricingStrategy getPricingStrategy(int bookType, double discount) {
 		if(bookType == 1) {
-			return new PercentageStrategy(3);
+			return new PercentageStrategy((int)discount, bookType);
 		}
 		
 		else if(bookType == 2) {
 			
-			return new FlatRateStrategy();
+			return new FlatRateStrategy(discount, bookType);
 		}
 		
 		else if(bookType == 3) {
-			return new PercentageStrategy(7);
+			return new PercentageStrategy((int)discount, bookType);
 		}
 		
 		else if(bookType == 4) {

@@ -18,4 +18,19 @@ public class NoDiscountStrategy implements IPricingStrategy {
 	public String getId() {
 		return strategyId;
 	}
+	@Override
+	public void setStrategyName(String strategyName) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setStrategyId(String strategyId) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public double getDiscount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

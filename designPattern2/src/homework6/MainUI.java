@@ -10,6 +10,11 @@ public class MainUI {
 	private Controller controller = new Controller();
 	
 	public MainUI() {
+		
+		controller.addSimpleStrategy("Discount001", "绝对值优惠策略1", 2, 1);
+		controller.addSimpleStrategy("Discount002", "百分比折扣策略1", 3, 7);
+		controller.addSimpleStrategy("Discount003", "百分比折扣策略2", 1, 3);
+		
 		JFrame frame = new JFrame("一个贩卖各类书籍的电子商务网站的购物车系统");
 		frame.setLayout(null);
 		frame.setBounds(100, 100, 1000, 800);
@@ -56,4 +61,5 @@ public class MainUI {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 }

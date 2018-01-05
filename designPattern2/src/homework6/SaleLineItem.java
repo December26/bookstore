@@ -4,15 +4,17 @@ public class SaleLineItem {
 	private int copies;
 	private BookSpecification prodSpec;
 	private IPricingStrategy strategy;
+	private double discount;
 	
-	public SaleLineItem(int copies, BookSpecification prodSpec) {
+	public SaleLineItem(int copies, BookSpecification prodSpec, double discount) {
 		this.copies = copies;
 		this.prodSpec = prodSpec;
+		this.discount = discount;
 	}
 	
 	public double getSubTotal() {
 		PricingStrategyFactory psf = PricingStrategyFactory.getInstance();
-		strategy = psf.getPricingStrategy(prodSpec.getType());
+		strategy = psf.getPricingStrategy(prodSpec.getType(),discount);
 		return strategy.getSubTotal(this);
 	}
 	

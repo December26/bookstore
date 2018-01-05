@@ -7,4 +7,6 @@ public interface IPricingStrategy {
 	public void setStrategyName(String strategyName);
 	public void setStrategyId(String strategyId);
 	public double getDiscount();
+	public void setBookType(int bookType);
+	public void setDiscount(double discount);
 }

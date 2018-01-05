@@ -33,4 +33,14 @@ public class NoDiscountStrategy implements IPricingStrategy {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public void setBookType(int bookType) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setDiscount(double discount) {
+		// TODO Auto-generated method stub
+		
+	}
 }

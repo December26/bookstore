@@ -35,13 +35,6 @@ public class FlatRateStrategy implements IPricingStrategy {
 		return strategyName;
 	}
 
-	public void setDiscountPerBook(double discountPerBook) {
-		this.discountPerBook = discountPerBook;
-	}
-
-	public void setStrategyType(int strategyType) {
-		this.strategyType = strategyType;
-	}
 
 	public void setStrategyName(String strategyName) {
 		this.strategyName = strategyName;
@@ -54,6 +47,18 @@ public class FlatRateStrategy implements IPricingStrategy {
 	@Override
 	public double getDiscount() {
 		return discountPerBook;
+	}
+
+	@Override
+	public void setBookType(int bookType) {
+		strategyType = bookType;
+		
+	}
+
+	@Override
+	public void setDiscount(double discount) {
+		this.discountPerBook = discount;
+		
 	}
 	
 	

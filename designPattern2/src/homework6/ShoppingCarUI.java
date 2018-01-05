@@ -15,12 +15,12 @@ public class ShoppingCarUI implements Observer {
 		sale.registerObserver(this);
 		frame1 = new JFrame("购物车");
 		frame1.setLayout(null);
-	    frame1.setBounds(1100, 120, 300, 600);
+	    frame1.setBounds(1100, 120, 600, 600);
 	    
 	    JLabel titleLabel = new JLabel("书名");
 		JLabel numberLabel = new JLabel("数量");
-		titleLabel.setBounds(70, 50, 50, 30);
-		numberLabel.setBounds(180, 50, 50, 30);
+		titleLabel.setBounds(100, 50, 50, 30);
+		numberLabel.setBounds(300, 50, 50, 30);
 		frame1.add(titleLabel);
 		frame1.add(numberLabel);
 		
@@ -37,15 +37,15 @@ public class ShoppingCarUI implements Observer {
 		for(int i=0;i<items.size();i++) {
 			JLabel label1 = new JLabel(items.get(i).getProdSpec().getTitle());
 			JLabel label2 = new JLabel(items.get(i).getCopies()+"");
-			label1.setBounds(70, position, 50, 30);
-			label2.setBounds(180, position, 50, 30);
+			label1.setBounds(100, position, 150, 30);
+			label2.setBounds(300, position, 150, 30);
 			frame1.add(label1);
 			frame1.add(label2);
 			position += 40;
 		}
 		
 		totalLabel.setText("总价为:"+String.valueOf(s.getTotal())+"元");
-		totalLabel.setBounds(100, 520, 120, 30);
+		totalLabel.setBounds(300, 520, 120, 30);
 		frame1.add(totalLabel);
 		
 		//JOptionPane.showMessageDialog(null, String.valueOf(s.getTotal()), "提示", JOptionPane.INFORMATION_MESSAGE);

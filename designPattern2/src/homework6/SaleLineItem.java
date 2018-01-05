@@ -3,18 +3,20 @@ package homework6;
 public class SaleLineItem {
 	private int copies;
 	private BookSpecification prodSpec;
-	private IPricingStrategy strategy;
+	private IPricingStrategy strategy, sub1, sub2;
 	private double discount;
 	
-	public SaleLineItem(int copies, BookSpecification prodSpec, double discount) {
+	public SaleLineItem(int copies, BookSpecification prodSpec, double discount, IPricingStrategy sub1, IPricingStrategy sub2) {
 		this.copies = copies;
 		this.prodSpec = prodSpec;
 		this.discount = discount;
+		this.sub1 = sub1;
+		this.sub2 = sub2;
 	}
 	
 	public double getSubTotal() {
 		PricingStrategyFactory psf = PricingStrategyFactory.getInstance();
-		strategy = psf.getPricingStrategy(prodSpec.getType(),discount);
+		strategy = psf.getPricingStrategy(prodSpec.getType(),discount, sub1, sub2);
 		return strategy.getSubTotal(this);
 	}
 	

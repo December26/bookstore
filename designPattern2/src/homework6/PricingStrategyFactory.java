@@ -11,7 +11,7 @@ public class PricingStrategyFactory {
 		return instance;
 	}
 	
-	IPricingStrategy getPricingStrategy(int bookType, double discount) {
+	IPricingStrategy getPricingStrategy(int bookType, double discount, IPricingStrategy sub1, IPricingStrategy sub2) {
 		if(bookType == 1) {
 			return new PercentageStrategy((int)discount, bookType);
 		}
@@ -26,7 +26,7 @@ public class PricingStrategyFactory {
 		}
 		
 		else if(bookType == 4) {
-			return new CompositeBestForCustomer();
+			return new CompositeBestForCustomer(sub1, sub2, bookType);
 		}
 		
 		else {

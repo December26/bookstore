@@ -56,6 +56,18 @@ public class PercentageStrategy implements IPricingStrategy {
 	public double getDiscount() {
 		return discountPercentage;
 	}
+
+	@Override
+	public void setBookType(int bookType) {
+		strategyType = bookType;
+		
+	}
+
+	@Override
+	public void setDiscount(double discount) {
+		discountPercentage = (int)discount;
+		
+	}
 	
 	
 }

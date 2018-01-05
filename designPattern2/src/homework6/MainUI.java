@@ -14,6 +14,13 @@ public class MainUI {
 		controller.addSimpleStrategy("Discount001", "绝对值优惠策略1", 2, 1);
 		controller.addSimpleStrategy("Discount002", "百分比折扣策略1", 3, 7);
 		controller.addSimpleStrategy("Discount003", "百分比折扣策略2", 1, 3);
+		controller.addCompositeStrategy("Discount004", "组合策略", 4, 13);
+		
+		controller.addBook("978-7-302-2", 18, "UML与模式应用", 2);
+		controller.addBook("978-7-312-3", 34, "Java与模式", 1);
+		controller.addBook("968-6-302-1", 58, "HeadFirst 设计模式", 1);
+		controller.addBook("958-1-302-2", 30, "爱丽丝历险记", 3);
+		controller.addBook("900-7-392-2", 20, "煲汤大全", 4);
 		
 		JFrame frame = new JFrame("一个贩卖各类书籍的电子商务网站的购物车系统");
 		frame.setLayout(null);

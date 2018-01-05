@@ -7,16 +7,18 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class BuyUI {
 	private Controller controller;
 	private JFrame frame1;
 	private String isbn, title;
 	private double price;
-	private int type;
+	private int type, copies;
 	
 	public BuyUI(Controller con) {
 		controller = con;
@@ -33,7 +35,7 @@ public class BuyUI {
 	    JTable bookTable = new JTable(controller.getBookCatalog().info(), columnNames);
 	    //bookTable.setPreferredScrollableViewportSize(new Dimension(550, 200));
 	    bookTable.setBounds(0, 0, 600, 400);
-	    bookTable.setRowHeight(20);
+	    bookTable.setRowHeight(40);
 	    //bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	    JScrollPane p = new JScrollPane(bookTable);
 	    p.setBounds(100, 30, 600, 400);
@@ -54,6 +56,14 @@ public class BuyUI {
             	}
             }	});
 	    
+	    JLabel label = new JLabel("购买数量:");
+        label.setBounds(80,480,150,25);
+        frame1.add(label);
+        JTextField text = new JTextField(20);
+        text.setBounds(180,480,100,25);
+        text.setText("1");
+        frame1.add(text);
+	    
 	    JButton btn = new JButton("加入购物车");
         btn.setBounds(500, 480, 150, 50);
         frame1.add(btn);
@@ -62,7 +72,8 @@ public class BuyUI {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SaleLineItem item = controller.buyBook(isbn, price, title, type);
+				copies = Integer.valueOf(text.getText());
+				SaleLineItem item = controller.buyBook(isbn, price, title, type, copies);
 				sale.buyBook(item);
 				sale.notifyObserver();
 				

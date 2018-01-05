@@ -27,6 +27,7 @@ public class Controller {
 		CompositeBestForCustomer strategy = (CompositeBestForCustomer) psf.getPricingStrategy(bookType, 0, strategyCatalog.subStrategy(a), strategyCatalog.subStrategy(b));
 		strategy.setStrategyId(id);
 		strategy.setStrategyName(name);
+		strategy.setDiscount(subs);
 		strategyCatalog.addStrategy(strategy);
 		
 		//System.out.println("组合策略添加成功");
@@ -35,9 +36,14 @@ public class Controller {
 	public void addSimpleStrategy(String id, String name, int bookType, double discount) {
 		PricingStrategyFactory psf = PricingStrategyFactory.getInstance();
 		IPricingStrategy strategy = psf.getPricingStrategy(bookType,discount, null, null);
+		System.out.println(id);
+		System.out.println(name);
 		strategy.setStrategyId(id);
+		//System.out.println(strategy.getId());
 		strategy.setStrategyName(name);
+		//System.out.println(strategy.getStrategyName());
 		strategyCatalog.addStrategy(strategy);
+		
 	}
 	
 	public void deleteStrategy(String id) {
@@ -45,18 +51,22 @@ public class Controller {
 	}
 	
 	public void updateStrategy(String id, String name, int bookType, double discount) {
-		
+		strategyCatalog.updateStrategy(id, name, bookType, discount);
 	}
 	
-	public SaleLineItem buyBook(String isbn, double price, String title, int type) {
+	public SaleLineItem buyBook(String isbn, double price, String title, int type, int copies) {
 		BookSpecification book = new BookSpecification(isbn, price, title, type);
 		double discount = strategyCatalog.getDiscountByBook(type);
-		SaleLineItem item = new SaleLineItem(1, book, discount, sub1, sub2); 
+		SaleLineItem item = new SaleLineItem(copies, book, discount, sub1, sub2); 
 		return item;
 	}
 	
 	public BookCatalog getBookCatalog() {
 		return bookCatalog;
+	}
+	
+	public StrategyCatalog getStrategyCatalog() {
+		return strategyCatalog;
 	}
 	
 }

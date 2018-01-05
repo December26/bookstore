@@ -9,10 +9,6 @@ public class NoDiscountStrategy implements IPricingStrategy {
 		double subTotal = item.getCopies()*item.getProdSpec().getPrice();
 		return subTotal;
 	}
-	@Override
-	public int getType() {
-		return strategyType;
-	}
 	
 	@Override
 	public String getId() {
@@ -42,5 +38,20 @@ public class NoDiscountStrategy implements IPricingStrategy {
 	public void setDiscount(double discount) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public int getbookType() {
+		// TODO Auto-generated method stub
+		return strategyType;
+	}
+	@Override
+	public String getStrategyName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

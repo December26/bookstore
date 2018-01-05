@@ -8,6 +8,7 @@ public class CompositeStrategy implements IPricingStrategy {
 	private String strategyName;
 	private String strategyId;
 	private String type = "×éºÏ²ßÂÔ";
+	private int composite;
 	
 	public CompositeStrategy(IPricingStrategy sub1, IPricingStrategy sub2, int strategyType) {
 		add(sub1);
@@ -28,7 +29,7 @@ public class CompositeStrategy implements IPricingStrategy {
 	}
 
 	@Override
-	public int getType() {
+	public int getbookType() {
 		return strategyType;
 	}
 
@@ -64,7 +65,7 @@ public class CompositeStrategy implements IPricingStrategy {
 	@Override
 	public double getDiscount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return composite;
 	}
 
 	@Override
@@ -75,8 +76,12 @@ public class CompositeStrategy implements IPricingStrategy {
 
 	@Override
 	public void setDiscount(double discount) {
-		// TODO Auto-generated method stub
-		
+		composite = (int)discount;
+	}
+
+	@Override
+	public String getType() {
+		return type;
 	}
 
 	

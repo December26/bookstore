@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class StrategyCatalog {
-	private HashMap<String, IPricingStrategy> strategies= new HashMap<>(10);
+	private HashMap<String, IPricingStrategy> strategies= new HashMap<>();
 	private Object[][] information = new Object[10][5];
 	
 	public void addStrategy(IPricingStrategy strategy) {
@@ -40,10 +40,12 @@ public class StrategyCatalog {
 		while(it.hasNext()) {
 			String key = (String)it.next();
 			if(strategies.get(key).getId().equals(id)) {
-				System.out.println(id);
-				strategies.remove(id);
+				System.out.println("É¾³ý "+id);
+				//strategies.remove(id);
+				it.remove();
 			}
 		}
+		//System.out.println(strategies.size());
 	}
 	
 	public void updateStrategy(String id, String name, int bookType, double discount) {
@@ -60,9 +62,12 @@ public class StrategyCatalog {
 	}
 	
 	public Object[][] info(){
+		System.out.println(strategies.size());
+		int number = strategies.size();
 		Iterator it = strategies.keySet().iterator();
 		int i = 0;
 		while(it.hasNext()) {
+			if(number<=0) break;
 			String key = (String)it.next();
 			information[i][0] = strategies.get(key).getId();
 			information[i][1] = strategies.get(key).getStrategyName();
@@ -70,7 +75,15 @@ public class StrategyCatalog {
 			information[i][3] = strategies.get(key).getbookType();
 			information[i][4] = strategies.get(key).getDiscount();
 			i++;
+			number--;
 		}
-		return information;
+		Object[][] info = new Object[i][5];
+		for(int j=0;j<i;j++) {
+			for(int k=0;k<5;k++) {
+				info[j][k]=information[j][k];
+			}
+		}
+		System.out.println("i = "+i);
+		return info;
 	}
 }

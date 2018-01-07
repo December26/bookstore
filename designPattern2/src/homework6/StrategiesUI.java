@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -23,7 +24,7 @@ public class StrategiesUI {
 		controller = con;
 		frame1.setTitle("策略维护");
 		frame1.setLayout(null);
-	    frame1.setBounds(800, 120, 1200, 600);
+	    frame1.setBounds(400, 120, 1200, 600);
 	    
 	    String[] columnNames = {"策略编号","策略名称","策略类型","适用图书类型","折扣"};
 	    JTable strategyTable = new JTable(controller.getStrategyCatalog().info(), columnNames);
@@ -114,9 +115,12 @@ public class StrategiesUI {
 				discount = Double.valueOf(text4.getText());
 				System.out.println(strategyId+strategyName+bookType+discount);
 				
+				if(bookType !=4) {
 					controller.addSimpleStrategy(strategyId, strategyName, bookType, discount);
+				}
 				
-				//else controller.addCompositeStrategy(strategyId, strategyName, bookType, (int)discount);
+				else controller.addCompositeStrategy(strategyId, strategyName, bookType, (int)discount);
+					JOptionPane.showMessageDialog(null, "添加成功", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 	    
@@ -126,7 +130,7 @@ public class StrategiesUI {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(strategyId);
 				controller.deleteStrategy(strategyId);
-				
+				JOptionPane.showMessageDialog(null, "删除成功", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 	    
@@ -140,7 +144,7 @@ public class StrategiesUI {
 				bookType = Integer.valueOf(text3.getText());
 				discount = Double.valueOf(text4.getText());
 				controller.updateStrategy(strategyId, strategyName, bookType, discount);
-				
+				JOptionPane.showMessageDialog(null, "修改成功", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 	    
